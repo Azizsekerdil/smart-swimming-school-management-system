@@ -25,7 +25,7 @@ Mako==1.4.1
 MarkupSafe==3.0.3
 PyJWT==2.13.0
 PyYAML==6.0.3
-SQLAlchemy==2.0.36
+SQLAlchemy==2.0.52
 alembic==1.14.0
 annotated-doc==0.0.5
 annotated-types==0.8.0

@@ -11,7 +11,7 @@ starlette>=1.6.0      # BSD-3-Clause (FastAPI bağımlılığı; güvenlik yamal
 python-multipart==0.0.32    # Apache-2.0
 
 # --- Data / ORM ---
-SQLAlchemy==2.0.36          # MIT
+SQLAlchemy==2.0.52          # MIT
 alembic==1.14.0             # MIT
 pydantic==2.10.4            # MIT
 pydantic-settings==2.7.0    # MIT
