@@ -6,7 +6,7 @@
 
 # --- Web framework ---
 fastapi==0.141.1            # MIT
-uvicorn[standard]==0.34.0   # BSD-3-Clause
+uvicorn[standard]==0.52.3   # BSD-3-Clause
 starlette>=1.6.0      # BSD-3-Clause (FastAPI bağımlılığı; güvenlik yamaları için alt sınır)
 python-multipart==0.0.32    # Apache-2.0
 
