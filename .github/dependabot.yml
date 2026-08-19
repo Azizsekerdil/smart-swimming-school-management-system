@@ -1,0 +1,45 @@
+version: 2
+
+# Bagimlilik guncellemeleri haftalik olarak onerilir. Guvenlik guncellemeleri
+# GitHub tarafindan ayrica ve daha sik acilir.
+updates:
+  - package-ecosystem: pip
+    directory: /backend
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels: [dependencies, backend]
+    commit-message:
+      prefix: "chore(deps)"
+
+  - package-ecosystem: npm
+    directory: /frontend
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels: [dependencies, frontend]
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      # Arayuz araclarini tek PR'da topla; gurultuyu azaltir.
+      dev-tooling:
+        patterns:
+          - "@types/*"
+          - "eslint*"
+          - "typescript*"
+          - "vite*"
+          - "prettier"
+
+  # CI action'lari commit SHA'sina sabitlidir; dependabot bunlari guvenli
+  # bicimde yukseltir ve yorumdaki surum etiketini de gunceller.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
+    labels: [dependencies, ci]
+    commit-message:
+      prefix: "chore(ci)"

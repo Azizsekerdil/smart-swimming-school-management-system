@@ -1,0 +1,140 @@
+# ==========================================================
+# Akıllı Yüzme Okulu Yönetim Sistemi - .gitignore
+# ==========================================================
+
+# --- SIRLAR / SECRETS (ASLA COMMIT EDİLMEZ) ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+credentials*
+credentials.json
+secrets*
+secrets.json
+tokens*
+token.json
+*_secret*
+*apikey*
+*api_key*
+.secrets/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Sanal ortam / Virtual env ---
+.venv/
+venv/
+ENV/
+env/
+.python-version
+
+# --- Test / Coverage ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.hypothesis/
+.mypy_cache/
+.dmypy.json
+.ruff_cache/
+
+# --- Veritabanı / Database ---
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+data/*.db
+data/uploads/
+
+# --- Yedekler / Backups ---
+backups/*
+!backups/.gitkeep
+
+# --- Loglar / Logs ---
+logs/*
+!logs/.gitkeep
+*.log
+
+# --- Node / Frontend ---
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+.eslintcache
+*.tsbuildinfo
+frontend/dist/
+frontend/node_modules/
+
+# --- Desktop / Tauri ---
+desktop/target/
+desktop/dist/
+*.msi
+*.exe
+!scripts/*.exe
+
+# --- IDE ---
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# --- Windows ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- AI Developer Agent geçici dosyaları ---
+tools/ai_developer/workspace/
+tools/ai_developer/patches/
+.ai_checkpoints/
+
+# --- Geçici / Temp ---
+tmp/
+temp/
+*.tmp
+*.bak
+
+# --- Sunum uretim ciktilari ---
+# Yayimlanan PDF'ler docs/presentation/ altinda surumlenir.
+# sunum/ dizini yalnizca URETIM CIKTISIDIR: PPTX, PDF, HTML ve ham PNG
+# kareleri tools/build_presentation.py ile tek komutla yeniden uretilir.
+sunum/*.html
+sunum/*.pptx
+sunum/*.pdf
+sunum/_kareler/
+sunum/ekranlar/
+
+# --- Denetim / audit calisma dosyalari ---
+.secrets.baseline
+*.sbom.json

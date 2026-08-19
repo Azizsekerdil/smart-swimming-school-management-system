@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="tr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Akıllı Yüzme Okulu Yönetim Sistemi" />
+    <title>Akıllı Yüzme Okulu Yönetim Sistemi</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Tema yanıp sönmesini (FOUC) önlemek için erken uygulanır
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('sws-theme')
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          var dark = stored === 'dark' || (stored === 'system' && prefersDark) || (!stored && prefersDark)
+          if (dark) document.documentElement.classList.add('dark')
+          var lang = localStorage.getItem('sws-language')
+          if (lang) document.documentElement.lang = lang
+        } catch (e) {
+          /* localStorage engellenmiş olabilir */
+        }
+      })()
+    </script>
+  </head>
+  <body class="h-full">
+    <div id="root" class="h-full"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

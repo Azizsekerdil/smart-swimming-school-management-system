@@ -1,0 +1,50 @@
+# gitleaks yapılandırması
+# ---------------------------------------------------------------------------
+# Varsayılan kural kümesi genişletilir; hiçbir kural GEVŞETİLMEZ.
+#
+# Aşağıdaki izin listesi yalnızca, denetimden geçmiş ve sır OLMADIĞI
+# gerekçesiyle birlikte kaydedilmiş belirli satırları kapsar. Her giriş bir
+# dosyaya ve bir desene bağlıdır; geniş kapsamlı ("bütün testler", "bütün
+# markdown") bir muafiyet bilinçli olarak yoktur.
+#
+# Gerçek bir anahtar bu depoya hiçbir zaman girmemelidir. Anahtarlar kurulumdan
+# sonra kullanıcının kendi `.env` dosyasına ya da bir sır yöneticisine yazılır.
+# ---------------------------------------------------------------------------
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "swimming-nvidia-key"
+description = "NVIDIA Build API anahtarı"
+regex = '''nvapi-[A-Za-z0-9_\-]{20,}'''
+tags = ["key", "nvidia"]
+
+[allowlist]
+description = "Denetlenmiş, sır olmayan örnek ve test değerleri"
+
+paths = [
+  # Üretim çıktısı; depoya girmez ama yerelde tarama gürültüsü yapar.
+  '''sunum/ekranlar/.*''',
+]
+
+regexes = [
+  # 1) CI duman testinde üretilip aynı işte atılan geçici parola. Yalnızca
+  #    efemer `ci_smoke.db` üzerinde kullanılır, hiçbir ortama dağıtılmaz.
+  '''Ci-Smoke-Pass-2026x1''',
+  # 2) Bootstrap regresyon testinin sabit parolası. Bellek içi SQLite'ta
+  #    yaşar, hiçbir gerçek hesapla ilişkisi yoktur.
+  '''Havuz-Guvenli-2026x1''',
+  # 3) CI'da JWT imzalamak için kullanılan, adı da bunu söyleyen sahte anahtar.
+  '''ci-only-not-a-real-secret-0123456789''',
+  # 4) Sağlayıcı yapılandırma testinin sahte anahtarı (ağ çağrısı yapılmaz).
+  '''test-key-1234567890''',
+  # 5) Standart JWT BAŞLIĞININ herkesçe bilinen base64'ü:
+  #    {"alg":"HS256","typ":"JWT"} — gizli bilgi taşımaz, belgelerde örnektir.
+  '''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9''',
+  # 6) Yer tutucu: kullanıcı kendi anahtarını kurulumdan sonra girer.
+  '''YOUR_PROVIDER_API_KEY_HERE''',
+  # 7) Finans yaşlandırma kovası etiket anahtarları ("finance.aging31_60",
+  #    "finance.aging60plus") — i18n anahtarıdır, sır değildir.
+  '''finance\.aging[0-9A-Za-z_]+''',
+]

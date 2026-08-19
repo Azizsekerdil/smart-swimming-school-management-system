@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-surface-light-alt text-slate-800 antialiased;
+    @apply dark:bg-surface-dark dark:text-slate-200;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Odak halkası: klavye erişilebilirliği */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
+  }
+
+  ::-webkit-scrollbar {
+    @apply h-2 w-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-300 dark:bg-slate-600;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 dark:bg-slate-500;
+  }
+}
+
+@layer components {
+  /* --- Kart --- */
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-card;
+    @apply dark:border-slate-700 dark:bg-surface-dark-alt;
+  }
+  .card-hover {
+    @apply transition-shadow hover:shadow-card-hover;
+  }
+  .card-header {
+    @apply flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-4 dark:border-slate-700;
+  }
+  .card-title {
+    @apply text-sm font-semibold text-slate-900 dark:text-slate-100;
+  }
+  .card-body {
+    @apply p-5;
+  }
+
+  /* --- Butonlar --- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium;
+    @apply transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800;
+  }
+  .btn-secondary {
+    @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
+    @apply dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700;
+  }
+  .btn-ghost {
+    @apply btn text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 text-white hover:bg-rose-700;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  /* --- Form --- */
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-400;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900;
+    @apply placeholder:text-slate-400 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500;
+    @apply dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500;
+    @apply disabled:bg-slate-100 dark:disabled:bg-slate-900;
+  }
+  .select {
+    @apply input pr-8;
+  }
+  .textarea {
+    @apply input min-h-[80px] resize-y;
+  }
+  .field-error {
+    @apply mt-1 text-xs text-rose-600 dark:text-rose-400;
+  }
+
+  /* --- Tablo --- */
+  .table {
+    @apply w-full text-left text-sm;
+  }
+  .table thead th {
+    @apply whitespace-nowrap border-b border-slate-200 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500;
+    @apply dark:border-slate-700 dark:text-slate-400;
+  }
+  .table tbody td {
+    @apply border-b border-slate-100 px-4 py-3 text-slate-700 dark:border-slate-700/60 dark:text-slate-300;
+  }
+  .table tbody tr:hover {
+    @apply bg-slate-50 dark:bg-slate-700/30;
+  }
+
+  /* --- Rozet --- */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+  .badge-neutral {
+    @apply badge bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200;
+  }
+  .badge-success {
+    @apply badge bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300;
+  }
+  .badge-warning {
+    @apply badge bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300;
+  }
+  .badge-danger {
+    @apply badge bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300;
+  }
+  .badge-info {
+    @apply badge bg-brand-100 text-brand-800 dark:bg-brand-900/40 dark:text-brand-300;
+  }
+
+  /* --- Kenar çubuğu --- */
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors;
+    @apply hover:bg-slate-100 hover:text-slate-900;
+    @apply dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-slate-100;
+  }
+  .nav-link-active {
+    @apply bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300;
+  }
+  .nav-section {
+    @apply px-3 pb-1.5 pt-4 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500;
+  }
+
+  /* --- Yükleniyor iskeleti --- */
+  .skeleton {
+    @apply animate-pulse rounded bg-slate-200 dark:bg-slate-700;
+  }
+
+  /* --- AI ayrımı: gerçek veri vs. model yorumu --- */
+  .ai-disclaimer {
+    @apply rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900;
+    @apply dark:border-amber-700/60 dark:bg-amber-900/20 dark:text-amber-200;
+  }
+  .data-panel {
+    @apply rounded-lg border border-emerald-300 bg-emerald-50/60 p-4;
+    @apply dark:border-emerald-800/60 dark:bg-emerald-900/10;
+  }
+  .ai-panel {
+    @apply rounded-lg border border-violet-300 bg-violet-50/60 p-4;
+    @apply dark:border-violet-800/60 dark:bg-violet-900/10;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Yazdırma: yalnızca içerik */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

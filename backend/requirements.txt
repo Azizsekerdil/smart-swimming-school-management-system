@@ -1,0 +1,41 @@
+# ==========================================================
+# Akıllı Yüzme Okulu Yönetim Sistemi - Backend Bağımlılıkları
+# Smart Swimming School Management System - Backend deps
+# Tüm bağımlılıklar permissive lisanslıdır (MIT / BSD / Apache-2.0)
+# ==========================================================
+
+# --- Web framework ---
+fastapi==0.141.1            # MIT
+uvicorn[standard]==0.34.0   # BSD-3-Clause
+starlette>=1.6.0      # BSD-3-Clause (FastAPI bağımlılığı; güvenlik yamaları için alt sınır)
+python-multipart==0.0.32    # Apache-2.0
+
+# --- Data / ORM ---
+SQLAlchemy==2.0.36          # MIT
+alembic==1.14.0             # MIT
+pydantic==2.10.4            # MIT
+pydantic-settings==2.7.0    # MIT
+email-validator==2.2.0      # CC0-1.0 / public domain
+
+# --- Güvenlik / Security ---
+passlib[bcrypt]==1.7.4      # BSD-2-Clause
+bcrypt==4.2.1               # Apache-2.0
+PyJWT==2.13.0               # MIT
+
+# --- Analitik / Analytics ---
+pandas==2.2.3               # BSD-3-Clause
+numpy==2.2.1                # BSD-3-Clause
+
+# --- Raporlama / Reporting ---
+openpyxl==3.1.5             # MIT
+reportlab==4.2.5            # BSD-3-Clause
+
+# --- HTTP istemcisi (AI provider'lar) / HTTP client ---
+httpx==0.28.1               # BSD-3-Clause
+
+# --- Zamanlama / Scheduling ---
+APScheduler==3.11.0         # MIT
+
+# --- Yardımcılar / Utilities ---
+python-dotenv==1.2.3        # BSD-3-Clause
+Babel==2.16.0               # BSD-3-Clause
