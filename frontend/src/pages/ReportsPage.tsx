@@ -846,7 +846,7 @@ export default function ReportsPage() {
           <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200">
             <input
               type="checkbox"
-              className="h-4 w-4 rounded border-slate-300 text-brand-600 dark:border-slate-600"
+              className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 dark:border-slate-600"
               checked={templateForm.is_shared}
               onChange={(event) =>
                 setTemplateForm((current) => ({ ...current, is_shared: event.target.checked }))

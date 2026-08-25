@@ -363,7 +363,7 @@ export default function NotificationsPage() {
                     'relative overflow-hidden rounded-lg border bg-white transition-colors dark:bg-surface-dark-alt',
                     notification.is_read
                       ? 'border-slate-200 dark:border-slate-700'
-                      : 'border-brand-200 shadow-sm dark:border-brand-800',
+                      : 'border-brand-200 shadow-xs dark:border-brand-800',
                   )}
                 >
                   <span

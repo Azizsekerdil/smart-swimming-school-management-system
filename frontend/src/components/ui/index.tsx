@@ -326,7 +326,7 @@ export function Modal({
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 pt-[6vh]">
       <div
-        className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm"
+        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -658,7 +658,7 @@ export function ToastContainer() {
   }
 
   return (
-    <div className="pointer-events-none fixed bottom-4 right-4 z-[100] flex w-full max-w-sm flex-col gap-2">
+    <div className="pointer-events-none fixed bottom-4 right-4 z-100 flex w-full max-w-sm flex-col gap-2">
       {toasts.map((toast) => (
         <div
           key={toast.id}
@@ -675,7 +675,7 @@ export function ToastContainer() {
           <button
             type="button"
             onClick={() => dismiss(toast.id)}
-            className="rounded p-1 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
+            className="rounded-sm p-1 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
             aria-label="Kapat"
           >
             <X className="h-3.5 w-3.5" />

@@ -53,7 +53,7 @@ export default function LoginPage() {
   return (
     <div className="grid min-h-full lg:grid-cols-2">
       {/* Sol: marka paneli */}
-      <div className="relative hidden overflow-hidden bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900 p-12 lg:flex lg:flex-col lg:justify-between">
+      <div className="relative hidden overflow-hidden bg-linear-to-br from-brand-600 via-brand-700 to-brand-900 p-12 lg:flex lg:flex-col lg:justify-between">
         <svg
           className="pointer-events-none absolute inset-x-0 bottom-0 opacity-20"
           viewBox="0 0 400 120"
@@ -69,7 +69,7 @@ export default function LoginPage() {
         </svg>
 
         <div className="relative flex items-center gap-3 text-white">
-          <div className="grid h-11 w-11 place-items-center rounded-xl bg-white/20 backdrop-blur">
+          <div className="grid h-11 w-11 place-items-center rounded-xl bg-white/20 backdrop-blur-sm">
             <Waves className="h-6 w-6" />
           </div>
           <div>
@@ -104,7 +104,7 @@ export default function LoginPage() {
         <div className="w-full max-w-sm">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-2.5 lg:hidden">
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 text-white">
+              <div className="grid h-10 w-10 place-items-center rounded-lg bg-linear-to-br from-brand-400 to-brand-600 text-white">
                 <Waves className="h-5 w-5" />
               </div>
               <p className="font-semibold text-slate-900 dark:text-slate-100">{t('app.name')}</p>

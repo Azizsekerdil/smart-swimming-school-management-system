@@ -219,7 +219,7 @@ function InfoRow({ label, value }: { label: string; value: ReactNode }) {
   return (
     <div className="flex items-start justify-between gap-4 border-b border-slate-100 py-2 last:border-0 dark:border-slate-800">
       <span className="shrink-0 text-xs text-slate-500 dark:text-slate-400">{label}</span>
-      <span className="min-w-0 break-words text-right text-sm font-medium text-slate-800 dark:text-slate-100">
+      <span className="min-w-0 wrap-break-word text-right text-sm font-medium text-slate-800 dark:text-slate-100">
         {value}
       </span>
     </div>
@@ -1639,7 +1639,7 @@ function BackupTab() {
                   {locationQuery.data.recent_files.map((name) => (
                     <li
                       key={name}
-                      className="truncate rounded bg-slate-50 px-2 py-1 font-mono text-xs text-slate-600 dark:bg-slate-800/60 dark:text-slate-300"
+                      className="truncate rounded-sm bg-slate-50 px-2 py-1 font-mono text-xs text-slate-600 dark:bg-slate-800/60 dark:text-slate-300"
                     >
                       {name}
                     </li>
@@ -1683,7 +1683,7 @@ function BackupTab() {
                       <td>
                         <ResultBadge result={check.result} />
                       </td>
-                      <td className="max-w-[260px] break-words text-xs text-slate-500 dark:text-slate-400">
+                      <td className="max-w-[260px] wrap-break-word text-xs text-slate-500 dark:text-slate-400">
                         {check.detail ?? '—'}
                       </td>
                     </tr>
@@ -1890,7 +1890,7 @@ function BackupTab() {
                       <td>
                         <ResultBadge result={step.status} />
                       </td>
-                      <td className="max-w-[260px] break-words text-xs text-slate-500 dark:text-slate-400">
+                      <td className="max-w-[260px] wrap-break-word text-xs text-slate-500 dark:text-slate-400">
                         {step.detail ?? '—'}
                       </td>
                     </tr>
@@ -2825,7 +2825,7 @@ function AboutTab() {
                       {keys.map((key) => (
                         <code
                           key={key}
-                          className="rounded bg-amber-50 px-1.5 py-0.5 text-[11px] text-amber-800 dark:bg-amber-900/30 dark:text-amber-200"
+                          className="rounded-sm bg-amber-50 px-1.5 py-0.5 text-[11px] text-amber-800 dark:bg-amber-900/30 dark:text-amber-200"
                         >
                           {key}
                         </code>

@@ -963,7 +963,7 @@ export default function HelpPage() {
                 <button
                   type="button"
                   onClick={() => setQuery('')}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-1 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
                   aria-label={t('common.clearFilters')}
                 >
                   <X className="h-3.5 w-3.5" />

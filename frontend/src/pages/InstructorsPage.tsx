@@ -217,7 +217,7 @@ function AvailabilityCalendar({ slots }: { slots: Availability[] }) {
                   <div
                     key={slot.id}
                     title={`${t(`weekdays.${weekday}`)} · ${minutesToLabel(from)} – ${minutesToLabel(to)}`}
-                    className="absolute top-1 flex h-5 items-center justify-center overflow-hidden whitespace-nowrap rounded bg-brand-500 px-1.5 text-[10px] font-medium text-white dark:bg-brand-600"
+                    className="absolute top-1 flex h-5 items-center justify-center overflow-hidden whitespace-nowrap rounded-sm bg-brand-500 px-1.5 text-[10px] font-medium text-white dark:bg-brand-600"
                     style={{ left: `${left}%`, width: `${width}%` }}
                   >
                     {minutesToLabel(from)}
@@ -841,7 +841,7 @@ export default function InstructorsPage() {
                 <dt className="text-xs font-medium text-slate-500 dark:text-slate-400">
                   {t('common.email')}
                 </dt>
-                <dd className="mt-0.5 break-words text-sm text-slate-800 dark:text-slate-200">
+                <dd className="mt-0.5 wrap-break-word text-sm text-slate-800 dark:text-slate-200">
                   {detail.email ?? '—'}
                 </dd>
               </div>

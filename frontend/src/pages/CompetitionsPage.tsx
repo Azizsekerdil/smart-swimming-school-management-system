@@ -195,7 +195,7 @@ function StudentPicker({
         <span className="truncate text-sm text-slate-800 dark:text-slate-100">{label}</span>
         <button
           type="button"
-          className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-700"
+          className="rounded-sm p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-700"
           onClick={() => {
             onSelect(null, '')
             setTerm('')

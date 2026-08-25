@@ -1,6 +1,250 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-brand-50: #eff9ff;
+  --color-brand-100: #def2ff;
+  --color-brand-200: #b6e7ff;
+  --color-brand-300: #75d5ff;
+  --color-brand-400: #2cc0ff;
+  --color-brand-500: #02a8f4;
+  --color-brand-600: #0086d1;
+  --color-brand-700: #016aa9;
+  --color-brand-800: #065a8b;
+  --color-brand-900: #0b4b73;
+  --color-brand-950: #072f4c;
+
+  --color-surface-light: #ffffff;
+  --color-surface-light-alt: #f6f8fb;
+  --color-surface-dark: #0f172a;
+  --color-surface-dark-alt: #1e293b;
+
+  --font-sans: Inter, Segoe UI, system-ui, sans-serif;
+  --font-mono: JetBrains Mono, Consolas, monospace;
+
+  --shadow-card:
+    0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-card-hover:
+    0 4px 12px -2px rgb(0 0 0 / 0.1), 0 2px 6px -2px rgb(0 0 0 / 0.06);
+  --shadow-panel: 0 10px 40px -12px rgb(0 0 0 / 0.25);
+
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-slide-up: slide-up 0.25s ease-out;
+  --animate-slide-down: slide-down 0.2s ease-out;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slide-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility card {
+  /* --- Kart --- */
+  @apply rounded-xl border border-slate-200 bg-white shadow-card;
+  @apply dark:border-slate-700 dark:bg-surface-dark-alt;
+}
+
+@utility card-hover {
+  @apply transition-shadow hover:shadow-card-hover;
+}
+
+@utility card-header {
+  @apply flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-4 dark:border-slate-700;
+}
+
+@utility card-title {
+  @apply text-sm font-semibold text-slate-900 dark:text-slate-100;
+}
+
+@utility card-body {
+  @apply p-5;
+}
+
+@utility btn {
+  /* --- Butonlar --- */
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium;
+  @apply transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+@utility btn-primary {
+  @apply btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800;
+}
+
+@utility btn-secondary {
+  @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
+  @apply dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700;
+}
+
+@utility btn-ghost {
+  @apply btn text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700;
+}
+
+@utility btn-danger {
+  @apply btn bg-rose-600 text-white hover:bg-rose-700;
+}
+
+@utility btn-sm {
+  @apply px-2.5 py-1.5 text-xs;
+}
+
+@utility label {
+  /* --- Form --- */
+  @apply mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-400;
+}
+
+@utility input {
+  @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900;
+  @apply placeholder:text-slate-400 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500;
+  @apply dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500;
+  @apply disabled:bg-slate-100 dark:disabled:bg-slate-900;
+}
+
+@utility select {
+  @apply input pr-8;
+}
+
+@utility textarea {
+  @apply input min-h-[80px] resize-y;
+}
+
+@utility field-error {
+  @apply mt-1 text-xs text-rose-600 dark:text-rose-400;
+}
+
+@utility table {
+  /* --- Tablo --- */
+  @apply w-full text-left text-sm;
+  & thead th {
+    @apply whitespace-nowrap border-b border-slate-200 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500;
+    @apply dark:border-slate-700 dark:text-slate-400;
+  }
+  & tbody td {
+    @apply border-b border-slate-100 px-4 py-3 text-slate-700 dark:border-slate-700/60 dark:text-slate-300;
+  }
+  & tbody tr:hover {
+    @apply bg-slate-50 dark:bg-slate-700/30;
+  }
+}
+
+@utility badge {
+  /* --- Rozet --- */
+  @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
+}
+
+@utility badge-neutral {
+  @apply badge bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200;
+}
+
+@utility badge-success {
+  @apply badge bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300;
+}
+
+@utility badge-warning {
+  @apply badge bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300;
+}
+
+@utility badge-danger {
+  @apply badge bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300;
+}
+
+@utility badge-info {
+  @apply badge bg-brand-100 text-brand-800 dark:bg-brand-900/40 dark:text-brand-300;
+}
+
+@utility nav-link {
+  /* --- Kenar çubuğu --- */
+  @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors;
+  @apply hover:bg-slate-100 hover:text-slate-900;
+  @apply dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-slate-100;
+}
+
+@utility nav-link-active {
+  @apply bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300;
+}
+
+@utility nav-section {
+  @apply px-3 pb-1.5 pt-4 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500;
+}
+
+@utility skeleton {
+  /* --- Yükleniyor iskeleti --- */
+  @apply animate-pulse rounded-sm bg-slate-200 dark:bg-slate-700;
+}
+
+@utility ai-disclaimer {
+  /* --- AI ayrımı: gerçek veri vs. model yorumu --- */
+  @apply rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900;
+  @apply dark:border-amber-700/60 dark:bg-amber-900/20 dark:text-amber-200;
+}
+
+@utility data-panel {
+  @apply rounded-lg border border-emerald-300 bg-emerald-50/60 p-4;
+  @apply dark:border-emerald-800/60 dark:bg-emerald-900/10;
+}
+
+@utility ai-panel {
+  @apply rounded-lg border border-violet-300 bg-violet-50/60 p-4;
+  @apply dark:border-violet-800/60 dark:bg-violet-900/10;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
 
 @layer base {
   :root {
@@ -24,7 +268,7 @@
 
   /* Odak halkası: klavye erişilebilirliği */
   *:focus-visible {
-    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
+    @apply outline-hidden ring-2 ring-brand-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
   }
 
   ::-webkit-scrollbar {
@@ -38,147 +282,6 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-slate-400 dark:bg-slate-500;
-  }
-}
-
-@layer components {
-  /* --- Kart --- */
-  .card {
-    @apply rounded-xl border border-slate-200 bg-white shadow-card;
-    @apply dark:border-slate-700 dark:bg-surface-dark-alt;
-  }
-  .card-hover {
-    @apply transition-shadow hover:shadow-card-hover;
-  }
-  .card-header {
-    @apply flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-4 dark:border-slate-700;
-  }
-  .card-title {
-    @apply text-sm font-semibold text-slate-900 dark:text-slate-100;
-  }
-  .card-body {
-    @apply p-5;
-  }
-
-  /* --- Butonlar --- */
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium;
-    @apply transition-colors disabled:cursor-not-allowed disabled:opacity-50;
-  }
-  .btn-primary {
-    @apply btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800;
-  }
-  .btn-secondary {
-    @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
-    @apply dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700;
-  }
-  .btn-ghost {
-    @apply btn text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700;
-  }
-  .btn-danger {
-    @apply btn bg-rose-600 text-white hover:bg-rose-700;
-  }
-  .btn-sm {
-    @apply px-2.5 py-1.5 text-xs;
-  }
-
-  /* --- Form --- */
-  .label {
-    @apply mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-400;
-  }
-  .input {
-    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900;
-    @apply placeholder:text-slate-400 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500;
-    @apply dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500;
-    @apply disabled:bg-slate-100 dark:disabled:bg-slate-900;
-  }
-  .select {
-    @apply input pr-8;
-  }
-  .textarea {
-    @apply input min-h-[80px] resize-y;
-  }
-  .field-error {
-    @apply mt-1 text-xs text-rose-600 dark:text-rose-400;
-  }
-
-  /* --- Tablo --- */
-  .table {
-    @apply w-full text-left text-sm;
-  }
-  .table thead th {
-    @apply whitespace-nowrap border-b border-slate-200 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500;
-    @apply dark:border-slate-700 dark:text-slate-400;
-  }
-  .table tbody td {
-    @apply border-b border-slate-100 px-4 py-3 text-slate-700 dark:border-slate-700/60 dark:text-slate-300;
-  }
-  .table tbody tr:hover {
-    @apply bg-slate-50 dark:bg-slate-700/30;
-  }
-
-  /* --- Rozet --- */
-  .badge {
-    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
-  }
-  .badge-neutral {
-    @apply badge bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200;
-  }
-  .badge-success {
-    @apply badge bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300;
-  }
-  .badge-warning {
-    @apply badge bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300;
-  }
-  .badge-danger {
-    @apply badge bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300;
-  }
-  .badge-info {
-    @apply badge bg-brand-100 text-brand-800 dark:bg-brand-900/40 dark:text-brand-300;
-  }
-
-  /* --- Kenar çubuğu --- */
-  .nav-link {
-    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors;
-    @apply hover:bg-slate-100 hover:text-slate-900;
-    @apply dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-slate-100;
-  }
-  .nav-link-active {
-    @apply bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300;
-  }
-  .nav-section {
-    @apply px-3 pb-1.5 pt-4 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500;
-  }
-
-  /* --- Yükleniyor iskeleti --- */
-  .skeleton {
-    @apply animate-pulse rounded bg-slate-200 dark:bg-slate-700;
-  }
-
-  /* --- AI ayrımı: gerçek veri vs. model yorumu --- */
-  .ai-disclaimer {
-    @apply rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900;
-    @apply dark:border-amber-700/60 dark:bg-amber-900/20 dark:text-amber-200;
-  }
-  .data-panel {
-    @apply rounded-lg border border-emerald-300 bg-emerald-50/60 p-4;
-    @apply dark:border-emerald-800/60 dark:bg-emerald-900/10;
-  }
-  .ai-panel {
-    @apply rounded-lg border border-violet-300 bg-violet-50/60 p-4;
-    @apply dark:border-violet-800/60 dark:bg-violet-900/10;
-  }
-}
-
-@layer utilities {
-  .scrollbar-none {
-    scrollbar-width: none;
-  }
-  .scrollbar-none::-webkit-scrollbar {
-    display: none;
-  }
-  .text-balance {
-    text-wrap: balance;
   }
 }
 

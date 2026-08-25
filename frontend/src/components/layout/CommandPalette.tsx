@@ -67,8 +67,8 @@ export function CommandPalette() {
   }
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-start justify-center p-4 pt-[12vh]">
-      <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm" onClick={() => setPaletteOpen(false)} />
+    <div className="fixed inset-0 z-60 flex items-start justify-center p-4 pt-[12vh]">
+      <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs" onClick={() => setPaletteOpen(false)} />
       <div
         className="relative w-full max-w-xl animate-slide-up overflow-hidden rounded-xl bg-white shadow-panel dark:bg-surface-dark-alt"
         onKeyDown={onKeyDown}
@@ -80,9 +80,9 @@ export function CommandPalette() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t('commandPalette.placeholder')}
-            className="h-12 flex-1 bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400 dark:text-slate-100"
+            className="h-12 flex-1 bg-transparent text-sm text-slate-900 outline-hidden placeholder:text-slate-400 dark:text-slate-100"
           />
-          <kbd className="rounded border border-slate-300 px-1.5 text-[10px] text-slate-400 dark:border-slate-600">
+          <kbd className="rounded-sm border border-slate-300 px-1.5 text-[10px] text-slate-400 dark:border-slate-600">
             ESC
           </kbd>
         </div>

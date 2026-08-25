@@ -1357,7 +1357,7 @@ export default function PoolsPage() {
                 <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-slate-300 text-brand-600 dark:border-slate-600"
+                    className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 dark:border-slate-600"
                     checked={holidayForm.is_closed}
                     onChange={(event) =>
                       setHolidayForm((prev) => ({ ...prev, is_closed: event.target.checked }))
@@ -1570,7 +1570,7 @@ export default function PoolsPage() {
             <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-slate-300 text-brand-600 dark:border-slate-600"
+                className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 dark:border-slate-600"
                 checked={poolForm.is_indoor}
                 onChange={(event) => updatePoolForm('is_indoor', event.target.checked)}
               />
@@ -1579,7 +1579,7 @@ export default function PoolsPage() {
             <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-slate-300 text-brand-600 dark:border-slate-600"
+                className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 dark:border-slate-600"
                 checked={poolForm.is_heated}
                 onChange={(event) => updatePoolForm('is_heated', event.target.checked)}
               />
@@ -1589,7 +1589,7 @@ export default function PoolsPage() {
               <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 rounded border-slate-300 text-brand-600 dark:border-slate-600"
+                  className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 dark:border-slate-600"
                   checked={poolForm.auto_create_lanes}
                   onChange={(event) => updatePoolForm('auto_create_lanes', event.target.checked)}
                 />
@@ -1682,7 +1682,7 @@ export default function PoolsPage() {
           <label className="flex items-center gap-2 text-sm text-slate-700 sm:col-span-2 dark:text-slate-300">
             <input
               type="checkbox"
-              className="h-4 w-4 rounded border-slate-300 text-brand-600 dark:border-slate-600"
+              className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 dark:border-slate-600"
               checked={laneForm.is_active}
               onChange={(event) =>
                 setLaneForm((prev) => ({ ...prev, is_active: event.target.checked }))

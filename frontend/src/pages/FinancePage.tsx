@@ -1072,7 +1072,7 @@ export default function FinancePage() {
               <label className="flex cursor-pointer items-center gap-2 pb-2 text-sm text-slate-600 dark:text-slate-300">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 rounded border-slate-300 text-brand-600"
+                  className="h-4 w-4 rounded-sm border-slate-300 text-brand-600"
                   checked={invoiceOverdueOnly}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     setInvoiceOverdueOnly(event.target.checked)
@@ -1409,7 +1409,7 @@ export default function FinancePage() {
               <label className="flex cursor-pointer items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 rounded border-slate-300 text-brand-600"
+                  className="h-4 w-4 rounded-sm border-slate-300 text-brand-600"
                   checked={discountActiveOnly}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     setDiscountActiveOnly(event.target.checked)
@@ -1928,7 +1928,7 @@ export default function FinancePage() {
           <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-600 dark:text-slate-300 sm:col-span-2">
             <input
               type="checkbox"
-              className="h-4 w-4 rounded border-slate-300 text-brand-600"
+              className="h-4 w-4 rounded-sm border-slate-300 text-brand-600"
               checked={expenseForm.isRecurring}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 setExpenseForm((current) => ({ ...current, isRecurring: event.target.checked }))
@@ -2069,7 +2069,7 @@ export default function FinancePage() {
             <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-slate-300 text-brand-600"
+                className="h-4 w-4 rounded-sm border-slate-300 text-brand-600"
                 checked={discountForm.isActive}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   setDiscountForm((current) => ({ ...current, isActive: event.target.checked }))
