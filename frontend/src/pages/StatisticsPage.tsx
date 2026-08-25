@@ -256,7 +256,7 @@ function LoadHeatmap({ cells }: { cells: HeatmapCell[] }) {
                 <div
                   key={`${weekday}-${hour}`}
                   title={`${t(`weekdays.${weekday}`)} ${String(hour).padStart(2, '0')}:00 · ${formatDuration(value)} · ${t('instructor.lessonCount')}: ${cell?.lesson_count ?? 0}`}
-                  className="h-7 rounded border border-slate-200/70 text-center text-[10px] leading-7 text-slate-700 dark:border-slate-700/70 dark:text-slate-200"
+                  className="h-7 rounded-sm border border-slate-200/70 text-center text-[10px] leading-7 text-slate-700 dark:border-slate-700/70 dark:text-slate-200"
                   style={{
                     backgroundColor: heatBackground(value, max),
                     color: ratio > 0.55 ? '#ffffff' : undefined,

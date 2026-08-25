@@ -76,8 +76,8 @@ export function GlobalSearch() {
   const groups = Object.entries(data?.groups ?? {})
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-start justify-center p-4 pt-[10vh]">
-      <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm" onClick={() => setSearchOpen(false)} />
+    <div className="fixed inset-0 z-60 flex items-start justify-center p-4 pt-[10vh]">
+      <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs" onClick={() => setSearchOpen(false)} />
       <div className="relative w-full max-w-2xl animate-slide-up overflow-hidden rounded-xl bg-white shadow-panel dark:bg-surface-dark-alt">
         <div className="flex items-center gap-3 border-b border-slate-200 px-4 dark:border-slate-700">
           <Search className="h-4 w-4 shrink-0 text-slate-400" />
@@ -87,10 +87,10 @@ export function GlobalSearch() {
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={(event) => event.key === 'Escape' && setSearchOpen(false)}
             placeholder={t('common.searchPlaceholder')}
-            className="h-12 flex-1 bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400 dark:text-slate-100"
+            className="h-12 flex-1 bg-transparent text-sm text-slate-900 outline-hidden placeholder:text-slate-400 dark:text-slate-100"
           />
           {isFetching && <Spinner className="text-slate-400" />}
-          <kbd className="rounded border border-slate-300 px-1.5 text-[10px] text-slate-400 dark:border-slate-600">
+          <kbd className="rounded-sm border border-slate-300 px-1.5 text-[10px] text-slate-400 dark:border-slate-600">
             ESC
           </kbd>
         </div>

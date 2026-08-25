@@ -148,7 +148,7 @@ function StepIcon({ status }: { status: AgentStep['status'] }) {
 function DiffView({ diff }: { diff: string }) {
   const lines = diff.replace(/\n$/, '').split('\n')
   return (
-    <div className="max-h-[26rem] overflow-auto rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900">
+    <div className="max-h-104 overflow-auto rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900">
       <div className="min-w-full py-1 font-mono text-[11px] leading-5">
         {lines.map((line, index) => {
           let tone = 'text-slate-600 dark:text-slate-300'
@@ -239,7 +239,7 @@ function ChipList({ items, tone }: { items: string[]; tone: 'neutral' | 'danger'
       {items.map((item) => (
         <span
           key={item}
-          className={`rounded px-1.5 py-0.5 font-mono text-[11px] ${styles[tone]}`}
+          className={`rounded-sm px-1.5 py-0.5 font-mono text-[11px] ${styles[tone]}`}
         >
           {item}
         </span>
@@ -702,7 +702,7 @@ export default function AIDeveloperPage() {
               <label className="flex h-9 items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 rounded border-slate-300 text-brand-600"
+                  className="h-4 w-4 rounded-sm border-slate-300 text-brand-600"
                   checked={autoTest}
                   onChange={(event: ChangeEvent<HTMLInputElement>) =>
                     setAutoTest(event.target.checked)
@@ -782,12 +782,12 @@ export default function AIDeveloperPage() {
                           )}
                         </div>
                         {step.detail && (
-                          <p className="mt-0.5 break-words text-xs text-slate-500 dark:text-slate-400">
+                          <p className="mt-0.5 wrap-break-word text-xs text-slate-500 dark:text-slate-400">
                             {step.detail}
                           </p>
                         )}
                         {step.output && (
-                          <pre className="mt-1 max-h-24 overflow-auto whitespace-pre-wrap rounded bg-slate-50 p-2 font-mono text-[10px] text-slate-600 dark:bg-slate-900 dark:text-slate-300">
+                          <pre className="mt-1 max-h-24 overflow-auto whitespace-pre-wrap rounded-sm bg-slate-50 p-2 font-mono text-[10px] text-slate-600 dark:bg-slate-900 dark:text-slate-300">
                             {step.output}
                           </pre>
                         )}
@@ -1218,7 +1218,7 @@ export default function AIDeveloperPage() {
                         <span className="ml-1 text-slate-400">:{hit.line}</span>
                       </td>
                       <td>
-                        <code className="block max-w-xl truncate rounded bg-slate-50 px-2 py-1 font-mono text-[11px] text-slate-700 dark:bg-slate-900 dark:text-slate-200">
+                        <code className="block max-w-xl truncate rounded-sm bg-slate-50 px-2 py-1 font-mono text-[11px] text-slate-700 dark:bg-slate-900 dark:text-slate-200">
                           {hit.text}
                         </code>
                       </td>

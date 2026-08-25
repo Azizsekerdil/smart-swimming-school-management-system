@@ -151,7 +151,7 @@ export function AppLayout() {
   const sidebar = (
     <nav className="flex h-full flex-col">
       <div className="flex items-center gap-2.5 px-4 py-4">
-        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-sm">
+        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-linear-to-br from-brand-400 to-brand-600 text-white shadow-xs">
           <Waves className="h-5 w-5" />
         </div>
         {!sidebarCollapsed && (
@@ -230,7 +230,7 @@ export function AppLayout() {
 
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Üst çubuk */}
-        <header className="no-print sticky top-0 z-30 flex h-14 shrink-0 items-center gap-2 border-b border-slate-200 bg-white/90 px-3 backdrop-blur dark:border-slate-700 dark:bg-surface-dark-alt/90 sm:px-4">
+        <header className="no-print sticky top-0 z-30 flex h-14 shrink-0 items-center gap-2 border-b border-slate-200 bg-white/90 px-3 backdrop-blur-sm dark:border-slate-700 dark:bg-surface-dark-alt/90 sm:px-4">
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
@@ -247,7 +247,7 @@ export function AppLayout() {
           >
             <Search className="h-4 w-4 shrink-0" />
             <span className="truncate">{t('common.searchPlaceholder')}</span>
-            <kbd className="ml-auto hidden rounded border border-slate-300 px-1.5 text-[10px] dark:border-slate-600 sm:block">
+            <kbd className="ml-auto hidden rounded-sm border border-slate-300 px-1.5 text-[10px] dark:border-slate-600 sm:block">
               /
             </kbd>
           </button>
@@ -367,7 +367,7 @@ export function LanguageToggle() {
           type="button"
           onClick={() => changeLanguage(code)}
           className={clsx(
-            'rounded px-3 py-1 text-xs font-medium transition-colors',
+            'rounded-sm px-3 py-1 text-xs font-medium transition-colors',
             i18n.language === code
               ? 'bg-brand-600 text-white'
               : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700',

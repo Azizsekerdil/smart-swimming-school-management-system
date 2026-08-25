@@ -991,7 +991,7 @@ function MetricsView({ metrics }: { metrics: Record<string, unknown> }) {
               <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
                 {humanizeKey(key)}
               </p>
-              <p className="mt-0.5 break-words text-sm font-semibold text-slate-900 dark:text-slate-100">
+              <p className="mt-0.5 wrap-break-word text-sm font-semibold text-slate-900 dark:text-slate-100">
                 {primitiveText(value)}
               </p>
             </div>
@@ -1182,7 +1182,7 @@ function ChatTab({ providers }: { providers: ProviderStatus[] }) {
                     : 'border border-violet-200 bg-violet-50 text-slate-800 dark:border-violet-900 dark:bg-violet-900/20 dark:text-slate-100',
                 )}
               >
-                <p className="whitespace-pre-line break-words">{entry.content}</p>
+                <p className="whitespace-pre-line wrap-break-word">{entry.content}</p>
                 {entry.role === 'assistant' && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {entry.provider && <Badge tone="info">{entry.provider}</Badge>}
@@ -1295,7 +1295,7 @@ function RoutingTab() {
                         {row.keywords.map((keyword) => (
                           <span
                             key={keyword}
-                            className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                            className="rounded-sm bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600 dark:bg-slate-700 dark:text-slate-300"
                           >
                             {keyword}
                           </span>
@@ -1377,7 +1377,7 @@ function RoutingTab() {
                         {model.capabilities.map((capability) => (
                           <span
                             key={capability}
-                            className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                            className="rounded-sm bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600 dark:bg-slate-700 dark:text-slate-300"
                           >
                             {capability}
                           </span>

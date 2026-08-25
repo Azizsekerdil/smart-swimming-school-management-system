@@ -880,7 +880,7 @@ export default function StudentsPage() {
             <label className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
               <input
                 type="checkbox"
-                className="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand-600 dark:border-slate-600 dark:bg-surface-dark"
+                className="mt-0.5 h-4 w-4 rounded-sm border-slate-300 text-brand-600 dark:border-slate-600 dark:bg-surface-dark"
                 checked={form.consent_given}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   updateField('consent_given', event.target.checked)

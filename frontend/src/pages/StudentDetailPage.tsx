@@ -956,7 +956,7 @@ function TimelineItem({ event }: { event: TimelineEvent }) {
 
   return (
     <li className="relative">
-      <span className="absolute -left-[27px] top-1 grid h-5 w-5 place-items-center rounded-full bg-white ring-2 ring-slate-200 dark:bg-surface-dark-alt dark:ring-slate-700">
+      <span className="absolute left-[-27px] top-1 grid h-5 w-5 place-items-center rounded-full bg-white ring-2 ring-slate-200 dark:bg-surface-dark-alt dark:ring-slate-700">
         {icon}
       </span>
       <div className="flex flex-wrap items-center gap-2">

@@ -602,7 +602,7 @@ export default function LessonsPage() {
                         {series.weekdays.map((day) => (
                           <span
                             key={day}
-                            className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                            className="rounded-sm bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600 dark:bg-slate-700 dark:text-slate-300"
                           >
                             {t(`weekdays.short.${day}`)}
                           </span>

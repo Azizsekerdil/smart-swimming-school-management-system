@@ -339,12 +339,12 @@ export default function LanePlanPage() {
               actions={
                 <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
                   <span className="flex items-center gap-1.5">
-                    <span className="h-3 w-3 rounded border border-slate-300 bg-slate-100 dark:border-slate-600 dark:bg-slate-800" />
+                    <span className="h-3 w-3 rounded-sm border border-slate-300 bg-slate-100 dark:border-slate-600 dark:bg-slate-800" />
                     {t('lane.free')}
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span
-                      className="h-3 w-3 rounded border-l-4"
+                      className="h-3 w-3 rounded-sm border-l-4"
                       style={blockStyle('#0ea5e9')}
                     />
                     {t('lane.occupied')}
@@ -413,8 +413,8 @@ export default function LanePlanPage() {
                             key={`${lane.id}-${index}`}
                             className={
                               lane.is_active
-                                ? 'rounded-sm border-l border-slate-200 bg-slate-100/70 dark:border-slate-700 dark:bg-slate-800/60'
-                                : 'rounded-sm border-l border-slate-200 bg-slate-200/60 dark:border-slate-700 dark:bg-slate-900/60'
+                                ? 'rounded-xs border-l border-slate-200 bg-slate-100/70 dark:border-slate-700 dark:bg-slate-800/60'
+                                : 'rounded-xs border-l border-slate-200 bg-slate-200/60 dark:border-slate-700 dark:bg-slate-900/60'
                             }
                             style={{ gridColumn: index + 2, gridRow: laneIndex + 2 }}
                           />

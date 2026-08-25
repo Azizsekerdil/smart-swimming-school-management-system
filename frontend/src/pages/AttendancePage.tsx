@@ -509,7 +509,7 @@ export default function AttendancePage() {
                     <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                       <input
                         type="checkbox"
-                        className="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
+                        className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
                         checked={consumeCredits}
                         onChange={(event) => setConsumeCredits(event.target.checked)}
                         disabled={!canWrite}
@@ -601,7 +601,7 @@ export default function AttendancePage() {
                                 {draft.status === 'excused' && (
                                   <input
                                     type="text"
-                                    className="input mt-2 w-full min-w-[10rem] py-1 text-xs"
+                                    className="input mt-2 w-full min-w-40 py-1 text-xs"
                                     placeholder={t('attendance.excuseReason')}
                                     aria-label={t('attendance.excuseReason')}
                                     value={draft.excuseReason}
@@ -615,7 +615,7 @@ export default function AttendancePage() {
                               <td>
                                 <input
                                   type="text"
-                                  className="input w-full min-w-[10rem] py-1 text-xs"
+                                  className="input w-full min-w-40 py-1 text-xs"
                                   placeholder={t('common.notes')}
                                   aria-label={t('common.notes')}
                                   value={draft.notes}

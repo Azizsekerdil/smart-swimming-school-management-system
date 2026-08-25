@@ -575,7 +575,7 @@ export default function CalendarPage() {
                             type="button"
                             onClick={() => setSelectedId(event.id)}
                             title={`${event.title} · ${formatTimeRange(event.start, event.end)}`}
-                            className="flex w-full items-center gap-1 rounded border-l-2 px-1 py-0.5 text-left text-[11px] text-slate-700 hover:opacity-80 dark:text-slate-100"
+                            className="flex w-full items-center gap-1 rounded-sm border-l-2 px-1 py-0.5 text-left text-[11px] text-slate-700 hover:opacity-80 dark:text-slate-100"
                             style={{
                               backgroundColor: `${eventColor(event)}26`,
                               borderLeftColor: eventColor(event),
@@ -681,7 +681,7 @@ export default function CalendarPage() {
                               type="button"
                               onClick={() => setSelectedId(event.id)}
                               title={`${event.title} · ${formatTimeRange(event.start, event.end)}`}
-                              className={`absolute overflow-hidden rounded-md border-l-4 px-1.5 py-1 text-left text-[11px] leading-tight text-slate-800 shadow-sm transition hover:z-10 hover:shadow-md dark:text-slate-100 ${
+                              className={`absolute overflow-hidden rounded-md border-l-4 px-1.5 py-1 text-left text-[11px] leading-tight text-slate-800 shadow-xs transition hover:z-10 hover:shadow-md dark:text-slate-100 ${
                                 event.status === 'cancelled' ? 'line-through opacity-60' : ''
                               }`}
                               style={{

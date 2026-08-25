@@ -177,7 +177,7 @@ function StudentPicker({
           </span>
           <button
             type="button"
-            className="rounded p-1 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
+            className="rounded-sm p-1 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
             onClick={() => {
               onChange(null)
               setTerm('')
@@ -251,7 +251,7 @@ function CreditsCell({ membership }: { membership: Membership }) {
   }
   const remaining = membership.remaining_credits ?? 0
   return (
-    <div className="min-w-[7rem]">
+    <div className="min-w-28">
       <p className="text-xs font-medium text-slate-700 dark:text-slate-200">
         {formatNumber(remaining)} / {formatNumber(membership.total_credits)}
       </p>
@@ -1226,7 +1226,7 @@ export default function MembershipsPage() {
             <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
+                className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
                 checked={membershipForm.autoRenew}
                 onChange={(event) =>
                   setMembershipForm({ ...membershipForm, autoRenew: event.target.checked })
@@ -1237,7 +1237,7 @@ export default function MembershipsPage() {
             <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
+                className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
                 checked={membershipForm.createPayment}
                 onChange={(event) =>
                   setMembershipForm({ ...membershipForm, createPayment: event.target.checked })
@@ -1436,7 +1436,7 @@ export default function MembershipsPage() {
           <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
             <input
               type="checkbox"
-              className="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
+              className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
               checked={renewForm.createPayment}
               onChange={(event) =>
                 setRenewForm({ ...renewForm, createPayment: event.target.checked })
@@ -1646,7 +1646,7 @@ export default function MembershipsPage() {
             <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
+                className="h-4 w-4 rounded-sm border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
                 checked={packageForm.isActive}
                 onChange={(event) =>
                   setPackageForm({ ...packageForm, isActive: event.target.checked })

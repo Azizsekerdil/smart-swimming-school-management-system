@@ -151,7 +151,7 @@ function ScalarValue({ value }: { value: unknown }) {
       </span>
     )
   }
-  return <span className="break-words text-slate-700 dark:text-slate-200">{String(value)}</span>
+  return <span className="wrap-break-word text-slate-700 dark:text-slate-200">{String(value)}</span>
 }
 
 function ComplexValue({ value }: { value: unknown }) {
@@ -164,7 +164,7 @@ function ComplexValue({ value }: { value: unknown }) {
           {value.map((item, index) => (
             <span
               key={index}
-              className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] text-slate-700 dark:bg-slate-700 dark:text-slate-200"
+              className="rounded-sm bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] text-slate-700 dark:bg-slate-700 dark:text-slate-200"
             >
               {String(item)}
             </span>
@@ -539,7 +539,7 @@ export default function CAIOPage() {
             <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-slate-300 text-brand-600"
+                className="h-4 w-4 rounded-sm border-slate-300 text-brand-600"
                 checked={includeAi}
                 onChange={(event: ChangeEvent<HTMLInputElement>) =>
                   setIncludeAi(event.target.checked)

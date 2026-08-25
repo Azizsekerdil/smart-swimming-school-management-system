@@ -754,7 +754,7 @@ export default function GuardiansPage() {
               ].map((row) => (
                 <div key={row.label} className="rounded-lg border border-slate-200 p-3 dark:border-slate-700">
                   <dt className="text-xs font-medium text-slate-500 dark:text-slate-400">{row.label}</dt>
-                  <dd className="mt-0.5 break-words text-sm text-slate-800 dark:text-slate-200">
+                  <dd className="mt-0.5 wrap-break-word text-sm text-slate-800 dark:text-slate-200">
                     {row.value}
                   </dd>
                 </div>
