@@ -6,7 +6,10 @@ All settings are read from environment variables (.env). No secret is hardcoded.
 
 from __future__ import annotations
 
+import json
+import os
 import secrets
+import sys
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -14,9 +17,58 @@ from typing import Literal
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-# Proje kök dizini: backend/app/core/config.py -> backend/app/core -> backend/app -> backend -> ROOT
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-BACKEND_ROOT = Path(__file__).resolve().parents[2]
+#: PyInstaller ile paketlenmiş sürümde mi çalışıyoruz?
+#: Paketli çalışmada kaynaklar (kod, derlenmiş arayüz, migration'lar) her
+#: açılışta GEÇİCİ bir dizine açılır ve salt okunur kabul edilmelidir;
+#: yazılabilir veri (veritabanı, log, yedek) exe'nin yanında tutulur.
+IS_FROZEN = bool(getattr(sys, "frozen", False))
+
+
+def _yazilabilir_mi(dizin: Path) -> bool:
+    """Dizine GERÇEKTEN yazılabildiğini dener.
+
+    Windows'ta izin bayraklarına bakmak yeterli değildir: ACL'ler ve UAC
+    yönlendirmesi ancak yazma denendiğinde ortaya çıkar.
+    """
+    if not dizin.is_dir():
+        return False
+    deneme = dizin / f".yazma_denemesi_{os.getpid()}"
+    try:
+        deneme.touch()
+        deneme.unlink()
+    except OSError:
+        return False
+    return True
+
+
+if IS_FROZEN:
+    #: Salt okunur kaynakların (derlenmiş arayüz, migration'lar) kökü.
+    RESOURCE_ROOT = Path(
+        getattr(sys, "_MEIPASS", Path(sys.executable).resolve().parent)
+    )
+    # Yazılabilir kök sırasıyla:
+    #   1. YUZME_OKULU_VERI_DIZINI ortam değişkeni — her şeyi ezer
+    #   2. exe'nin yanındaki dizin (taşınabilir kullanım; veri exe ile taşınır)
+    #   3. %LOCALAPPDATA%\YuzmeOkulu (Program Files gibi yazılamayan kurulumlar)
+    _ozel_veri = os.environ.get("YUZME_OKULU_VERI_DIZINI", "").strip()
+    if _ozel_veri:
+        PROJECT_ROOT = Path(_ozel_veri).expanduser().resolve()
+    else:
+        _exe_dizini = Path(sys.executable).resolve().parent
+        if _yazilabilir_mi(_exe_dizini):
+            PROJECT_ROOT = _exe_dizini
+        else:
+            _yerel = os.environ.get("LOCALAPPDATA") or os.environ.get("APPDATA")
+            PROJECT_ROOT = (
+                (Path(_yerel) if _yerel else Path.home()) / "YuzmeOkulu"
+            ).resolve()
+    PROJECT_ROOT.mkdir(parents=True, exist_ok=True)
+    BACKEND_ROOT = RESOURCE_ROOT
+else:
+    # Proje kök dizini: backend/app/core/config.py -> backend/app/core -> backend/app -> backend -> ROOT
+    PROJECT_ROOT = Path(__file__).resolve().parents[3]
+    BACKEND_ROOT = Path(__file__).resolve().parents[2]
+    RESOURCE_ROOT = PROJECT_ROOT
 
 
 class Settings(BaseSettings):
@@ -166,6 +218,18 @@ class Settings(BaseSettings):
         return p.resolve()
 
     @property
+    def frontend_dist_path(self) -> Path:
+        """Derlenmiş arayüzün bulunduğu dizin.
+
+        Paketli sürümde (PyInstaller) arayüz paket içine `arayuz` adıyla
+        gömülür ve geçici açılma dizininden okunur; geliştirmede
+        `frontend/dist` kullanılır.
+        """
+        if IS_FROZEN:
+            return RESOURCE_ROOT / "arayuz"
+        return PROJECT_ROOT / "frontend" / "dist"
+
+    @property
     def is_production(self) -> bool:
         return self.app_env == "production"
 
@@ -234,9 +298,43 @@ def mask_secret(value: str | None) -> str:
     return f"{value[:3]}{'*' * 12}{value[-4:]}"
 
 
+def _kalici_gizli_anahtar(ad: str) -> str:
+    """Verilmeyen gizli anahtarı üretir; SONRAKİ açılışlarda aynı değeri döner.
+
+    Paketli sürümde `secret_key` her süreçte yeniden üretilseydi, kullanıcı
+    programı her açtığında tüm oturumlar (JWT) geçersiz kalırdı. Bu yüzden
+    üretilen anahtar veri kökünde saklanır. `.env` veya ortam değişkeniyle
+    açıkça anahtar verilmişse bu dosyaya hiç bakılmaz.
+    """
+    dosya = PROJECT_ROOT / "data" / "gizli-anahtarlar.json"
+    try:
+        if dosya.is_file():
+            mevcut = json.loads(dosya.read_text(encoding="utf-8"))
+            deger = mevcut.get(ad)
+            if isinstance(deger, str) and deger:
+                return deger
+        else:
+            mevcut = {}
+    except (OSError, ValueError):
+        return secrets.token_urlsafe(64)
+
+    yeni = secrets.token_urlsafe(64)
+    mevcut[ad] = yeni
+    try:
+        dosya.parent.mkdir(parents=True, exist_ok=True)
+        dosya.write_text(json.dumps(mevcut, indent=2), encoding="utf-8")
+    except OSError:
+        pass
+    return yeni
+
+
 @lru_cache
 def get_settings() -> Settings:
-    return Settings()
+    s = Settings()
+    # Paketli sürümde .env/ortam değişkeniyle verilmemiş secret_key kalıcılaştırılır.
+    if IS_FROZEN and "secret_key" not in s.model_fields_set:
+        s.secret_key = _kalici_gizli_anahtar("secret_key")
+    return s
 
 
 settings = get_settings()

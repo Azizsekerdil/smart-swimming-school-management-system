@@ -96,7 +96,7 @@ def health_check(db: Session = Depends(db_session)) -> HealthReport:
         )
 
     # Frontend derlemesi
-    dist = settings.project_root / "frontend" / "dist" / "index.html"
+    dist = settings.frontend_dist_path / "index.html"
     components.append(
         HealthComponent(
             name="frontend",

@@ -149,7 +149,8 @@ _uploads.mkdir(parents=True, exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=str(_uploads)), name="uploads")
 
 # --- Üretim derlemesinde SPA'yı da bu sunucudan servis et ---
-_frontend_dist = settings.project_root / "frontend" / "dist"
+# Paketli (PyInstaller) sürümde arayüz paket içindeki `arayuz` dizininden okunur.
+_frontend_dist = settings.frontend_dist_path
 
 _DRIVE_PREFIX = re.compile(r"^[A-Za-z]:")
 
