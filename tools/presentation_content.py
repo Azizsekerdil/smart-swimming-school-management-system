@@ -33,8 +33,8 @@ DECK: list[dict] = [
             {"tr": "Tam Türkçe / İngilizce", "en": "Full Turkish / English"},
         ],
         "footer": {
-            "tr": "Ağustos 2026 · Windows masaüstü + web · MIT lisansı · Kurum içi kurulum",
-            "en": "August 2026 · Windows desktop + web · MIT license · On-premise deployment",
+            "tr": "Eylül 2026 · Windows 10/11 (x64) + macOS (Apple Silicon) + web · MIT lisansı · Kurum içi kurulum",
+            "en": "September 2026 · Windows 10/11 (x64) & macOS (Apple Silicon) + web · MIT license · On-premise deployment",
         },
     },
     # -----------------------------------------------------------------  2
@@ -1985,8 +1985,8 @@ DECK: list[dict] = [
                 "accent": "rose",
                 "title": {"tr": "Masaüstü Uygulaması", "en": "Desktop Application"},
                 "body": {
-                    "tr": "Tek tıkla açılan Windows uygulaması; tarayıcı gerektirmez, düşük bellek kullanır.",
-                    "en": "A one-click Windows application that needs no browser and keeps memory usage low.",
+                    "tr": "Tek tıkla açılan Windows 10/11 (x64) ve macOS (Apple Silicon) uygulaması; tarayıcı gerektirmez, düşük bellek kullanır.",
+                    "en": "A one-click Windows 10/11 (x64) and macOS (Apple Silicon) application that needs no browser and keeps memory usage low.",
                 },
             },
         ],
@@ -2038,7 +2038,7 @@ DECK: list[dict] = [
                     "• TanStack Query ile veri eşzamanlaması",
                     "• Recharts ile grafikler",
                     "• react-i18next ile TR/EN",
-                    "• Masaüstü sarmalayıcı: WebView2 (düşük bellek)",
+                    "• Masaüstü sarmalayıcı: WebView2 (Windows) · WKWebView (macOS)",
                     "",
                     "Tip denetimi ve lint kuralları sıfır uyarı ile geçer.",
                 ],
@@ -2048,7 +2048,7 @@ DECK: list[dict] = [
                     "• Data synchronisation with TanStack Query",
                     "• Charts with Recharts",
                     "• TR/EN via react-i18next",
-                    "• Desktop shell: WebView2 (low memory)",
+                    "• Desktop shell: WebView2 (Windows) · WKWebView (macOS)",
                     "",
                     "Type checking and lint rules pass with zero warnings.",
                 ],
@@ -2165,12 +2165,12 @@ DECK: list[dict] = [
             },
         ],
         "note": {
-            "tr": "Bu sürüm bir yayın adayıdır (v0.9.0). Okul yönetimi, planlama, finans, performans ve yedekleme modülleri üretime hazırdır; yapay zekâ geliştirici ajanı deneysel olarak işaretlenmiştir ve varsayılan olarak salt okunur çalışır.",
-            "en": "This is a release candidate (v0.9.0). The school management, scheduling, finance, performance and backup modules are production-ready; the AI developer agent is marked experimental and runs read-only by default.",
+            "tr": "Bu sürüm bir yayın adayıdır (v0.9.0). Okul yönetimi, planlama, finans, performans ve yedekleme modülleri üretime hazırdır; yapay zekâ geliştirici ajanı deneysel olarak işaretlenmiştir ve varsayılan olarak salt okunur çalışır. macOS paketi Apple Silicon (arm64) içindir ve notarize edilmemiştir; ilk açılışta sağ tık → Aç gerekir.",
+            "en": "This is a release candidate (v0.9.0). The school management, scheduling, finance, performance and backup modules are production-ready; the AI developer agent is marked experimental and runs read-only by default. The macOS package targets Apple Silicon (arm64) and is not notarised; on first launch use right-click → Open.",
         },
         "footer": {
-            "tr": "MIT lisansı · Kurum içi kurulum · Windows masaüstü ve web · Türkçe / İngilizce",
-            "en": "MIT licence · On-premise deployment · Windows desktop and web · Turkish / English",
+            "tr": "MIT lisansı · Windows 10/11 (x64) + macOS (Apple Silicon) · İndirme: github.com/Azizsekerdil/smart-swimming-school-management-system/releases (v0.9.0) · Türkçe / İngilizce",
+            "en": "MIT licence · Windows 10/11 (x64) & macOS (Apple Silicon) · Download: GitHub Releases (v0.9.0) · Turkish / English",
         },
     },
 ]
