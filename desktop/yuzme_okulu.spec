@@ -178,3 +178,20 @@ coll = COLLECT(
     upx_exclude=[],
     name="YuzmeOkulu",
 )
+
+# macOS'ta çift tıklanabilir .app paketi üretilir (build_macos.sh bunu
+# zip'ler). Windows/Linux'ta COLLECT çıktısı (dist/YuzmeOkulu/) kullanılır.
+if sys.platform == "darwin":
+    app = BUNDLE(
+        coll,
+        name="YuzmeOkulu.app",
+        icon=IKON,
+        bundle_identifier="com.yuzmeokulu.desktop",
+        info_plist={
+            "CFBundleName": "YuzmeOkulu",
+            "CFBundleDisplayName": "Akıllı Yüzme Okulu Yönetim Sistemi",
+            "CFBundleShortVersionString": SURUM,
+            "CFBundleVersion": SURUM,
+            "NSHighResolutionCapable": True,
+        },
+    )
